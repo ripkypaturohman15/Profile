@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ripky Paturohman - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#home"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="#about"><i class="fas fa-user"></i>About</a></li>
+            <li><a href="#projects"><i class="fas fa-project-diagram"></i>Projects</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <img src="Gambar/IMG_20240614_194352.jpg" alt="Profile Picture" class="profile-img floating-icon">
+        <h1>Hi, I'm Ripky Paturohman</h1>
+        <p>Full Stack Developer</p>
+        <div class="social-links">
+            <a href="https://github.com/ripkypaturohman15"><i class="fab fa-github"></i></a>
+            <a href="https://www.tiktok.com/@younhkyy_"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/younhkyy"><i class="fab fa-instagram"></i></a>
+        </div>
+        <button onclick="location.href='#contact'">
+            <i class="fas fa-paper-plane"></i>Get in Touch
+        </button>
+    </section>
+
+    <!-- About Section -->
+<section id="about">
+    <h2><i class="fas fa-user-tie"></i> About Me</h2>
+    <div class="about-content">
+        <p>I am Ripky Paturohman, a student at Universitas Kuningan, currently pursuing a degree in Information Systems. 
+            In addition to focusing on education in the field of information technology, I also possess skills in graphic design and programming.</p>
+        
+        <!-- Photo Gallery Grid -->
+        <div class="photo-gallery">
+            <div class="photo-item">
+                <img src="Gambar/Ayang 1.jpg" alt="Working on Project">
+                <div class="photo-caption">My</div>
+            </div>
+            <div class="photo-item">
+                <img src="Gambar/Ayang 2.jpg" alt="Team Collaboration">
+                <div class="photo-caption">Love</div>
+            </div>
+            <div class="photo-item">
+                <img src="Gambar/Ayang 3.jpg" alt="Award Ceremony">
+                <div class="photo-caption">World</div>
+            </div>
+        </div>
+
+        <h3>My Skills</h3>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <i class="fab fa-html5"></i>
+                <span>HTML5</span>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-css3-alt"></i>
+                <span>CSS3</span>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-js"></i>
+                <span>JavaScript</span>
+            </div>
+            <!-- Tambahkan skill lainnya -->
+        </div>
+    </div>
+</section>
+
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2><i class="fas fa-code-branch"></i> My Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="Gambar/Sertif Dicoding Web.jpg" class="card-img-top" alt="Project 1" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">Dicoding Web Project</h5>
+                    <p class="card-text">Graduated from Dicoding online Web learning project.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="Gambar/Screenshot 2025-01-12 210926.png" class="card-img-top" alt="Project 2" style="height: 180px; object-fit: cover;">
+                     <div class="card-body">
+                            <h5 class="card-title">UI/UX Application Design Project</h5>
+                            <p class="card-text">Created a Pregnancy Guide App with my team.</p>
+                     </div>
+            </div>
+            <div class="project-card">
+                <img src="Gambar/Screenshot 2025-01-15 172154.png" class="card-img-top" alt="Project 3" style="height: 200px; object-fit: cover;">
+                     <div class="card-body">
+                            <h5 class="card-title">IoT Fire Detection Project</h5>
+                            <p class="card-text">IoT-based fire detection system integrated with WhatsApp.</p>
+                    </div>
+            </div>
+              
+            </div>
+            <!-- Tambahkan project card lainnya -->
+        </div>
+    </section>
+
+     <!-- Contact Section -->
+     <section id="contact">
+        <h2><i class="fas fa-envelope-open-text"></i> Contact Me</h2>
+        <form id="contact-form" class="contact-form">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <i class="fas fa-user input-icon"></i>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                <i class="fas fa-envelope input-icon"></i>
+            </div>
+            <div class="form-group">
+                <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                <i class="fas fa-comment-dots input-icon"></i>
+            </div>
+            <button type="submit">
+                <i class="fas fa-paper-plane"></i>Send Message
+            </button>
+        </form>
+    </section>
+
+    <script>
+        // Inisialisasi EmailJS
+        emailjs.init("Yy2sWjqj1NRfkoqZt");
+
+        // Handle form submission
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const btn = this.querySelector('button');
+            const originalBtnText = btn.innerHTML;
+            
+            // Tampilkan loading state
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+
+            emailjs.sendForm('service_v2exj9o', 'template_uxk8xla', this)
+                .then(() => {
+                    showAlert('Message sent successfully!', 'success');
+                    this.reset();
+                })
+                .catch((error) => {
+                    showAlert('Failed to send message. Please try again.', 'error');
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    btn.innerHTML = originalBtnText;
+                    btn.disabled = false;
+                });
+        });
+
+     
+
+        // Smooth scroll dan active link (tetap sama)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - sectionHeight/3) {
+                    const currentId = section.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').includes(currentId)) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
